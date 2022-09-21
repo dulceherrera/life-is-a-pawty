@@ -1,0 +1,130 @@
+.icon-home {
+  width: 100%;
+}
+
+.purple-background {
+  background-color: #7f67be;
+}
+
+.search-height {
+  border: none;
+  background-color: #aaacdc;
+  font-size: 1.3rem;
+}
+
+.form-styles {
+  color: white;
+}
+
+::placeholder {
+  color: white;
+  font-family: Quicksand, sans-serif;
+  font-weight: 500;
+}
+
+.btn {
+  background-color: #a781cc;
+}
+
+.font-patrick {
+  font-family: "Patrick Hand SC", cursive;
+  text-decoration: none;
+}
+
+option {
+  font-family: Quicksand, sans-serif;
+  white-space: wrap;
+}
+
+.justify-content-right {
+  justify-content: right;
+}
+
+.next {
+  font-family: Quicksand, sans-serif;
+  font-weight: bolder;
+  font-size: 1.3rem;
+}
+
+.pet-info {
+  font-family: Quicksand, sans-serif;
+  background-color: #ebdefc;
+  color: black;
+  border: #8f27c0 solid 3px;
+  border-radius: 10px;
+}
+
+select {
+  font-family: Quicksand, sans-serif;
+  font-weight: 500;
+  font-size: 5rem;
+  overflow-block: inherit;
+}
+
+.pl-2 {
+  padding-left: 1rem;
+}
+
+.find-friend {
+  font-size: 2rem;
+}
+
+.pet-img {
+  object-fit: cover;
+}
+
+.mt-10 {
+  margin-top: 6rem;
+}
+
+.img-fluid {
+  border-radius: 10px;
+}
+
+p {
+  font-size: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+.card {
+  border: none;
+}
+
+.title-nav {
+  font-size: 2rem;
+}
+
+.justify-content {
+  justify-content: center;
+}
+
+@media screen and (min-width: 768px) {
+  .title-nav,
+  .find-friend {
+    font-size: 3.5rem;
+  }
+
+  .search-height {
+    font-size: 2rem;
+  }
+
+  .next {
+    font-size: 2rem;
+  }
+
+  .pet-title {
+    font-size: 3rem;
+  }
+
+  .card-text {
+    font-size: 2rem;
+  }
+
+  .g-0 {
+    margin-top: 6rem;
+  }
+
+  .justify-content {
+    justify-content: end;
+  }
+}

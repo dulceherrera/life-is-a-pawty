@@ -1,8 +1,9 @@
 import React from 'react';
 import Home from './pages/home';
-import parseRoute from './lib/parse-route';
 import Navbar from './components/navbar';
-import PageContainer from './components/page-container';
+import PageContainer from './components/pagecontainer';
+import parseRoute from './lib/parse-route';
+import Matches from './pages/matches';
 
 export default class App extends React.Component {
   constructor(props) {
@@ -14,7 +15,8 @@ export default class App extends React.Component {
 
   componentDidMount() {
     window.addEventListener('hashchange', () => {
-      this.setState({ route: parseRoute(window.location.hash) });
+      const parsedRoutes = parseRoute(window.location.hash);
+      this.setState({ route: parsedRoutes });
     });
   }
 
@@ -23,15 +25,18 @@ export default class App extends React.Component {
     if (route.path === '') {
       return <Home />;
     }
+    if (route.path === 'matches') {
+      return <Matches />;
+    }
   }
 
   render() {
     return (
       <>
-      <Navbar />
-      <PageContainer>
+        <Navbar />
+        <PageContainer>
         {this.showMatches()}
-      </PageContainer>
+        </PageContainer>
       </>
     );
   }
