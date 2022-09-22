@@ -2,23 +2,12 @@ require('dotenv/config');
 const express = require('express');
 const staticMiddleware = require('./static-middleware');
 const errorMiddleware = require('./error-middleware');
-const jsonMiddleware = express.json();
 const ClientError = require('./client-error');
 
 const app = express();
 
 const petfinder = require('@petfinder/petfinder-js');
 const client = new petfinder.Client({ apiKey: process.env.PETFINDER_KEY, secret: process.env.PETFINDER_SECRET });
-const pg = require('pg');
-const db = new pg.Pool({
-  connectionString: process.env.DATABASE_URL,
-  ssl: {
-    rejectUnauthorized: false
-  }
-});
-
-app.use(staticMiddleware);
-app.use(jsonMiddleware);
 
 app.get('/api/pets/:location/:type', (req, res) => {
   const { location } = req.params;
@@ -41,33 +30,7 @@ app.get('/api/pets/:location/:type', (req, res) => {
       console.error(err);
     });
 });
-
-app.post('/api/favoritesList', (req, res, next) => {
-  const petId = req.body.petId;
-  const userId = 1;
-  const name = req.body.name;
-  const location = req.body.location;
-  const age = req.body.age;
-  const breed = req.body.breed;
-  const size = req.body.size;
-  const gender = req.body.gender;
-
-  const sql = `
-  insert into "favoritesList" ("petId", "userId", "name", "location", "age", "breed", "size", "gender")
-    values($1 ,$2 ,$3, $4, $5, $6, $7, $8)
-    returning*
-    `;
-
-  const params = [petId, userId, name, location, age, breed, size, gender];
-  return db.query(sql, params)
-    .then(result => {
-      const [animal] = result.rows;
-      res.status(201).json(animal);
-    })
-    .catch(err => {
-      console.error(err);
-    });
-});
+app.use(staticMiddleware);
 
 app.use(errorMiddleware);
 
