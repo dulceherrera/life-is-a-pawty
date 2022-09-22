@@ -13,9 +13,14 @@ export default class Matches extends React.Component {
       gender: '',
       size: ''
     };
+    this.handleSave = this.handleSave.bind(this);
   }
 
   componentDidMount() {
+    this.handleSearch();
+  }
+
+  handleSearch() {
     const queryString = window.location.hash.split('?');
     const params = new URLSearchParams(queryString[1]);
     const location = params.get('location');
@@ -41,6 +46,28 @@ export default class Matches extends React.Component {
       });
   }
 
+  handleSave() {
+    fetch('/api/favoritesList', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        petId: Number(this.state.id),
+        userId: 1,
+        name: this.state.name,
+        location: this.state.location,
+        age: this.state.age,
+        breed: this.state.breed,
+        size: this.state.size,
+        gender: this.state.gender
+      })
+    })
+      .then(res => res.json())
+      .then(() => this.handleSearch())
+      .catch(err => {
+        console.error(err);
+      });
+  }
+
   render() {
     const { photo, name, location, age, breed, gender, size } = this.state;
     return (
@@ -57,6 +84,11 @@ export default class Matches extends React.Component {
                 <p className='card-text'><span className="fw-bolder">Breed:</span> {breed}</p>
                 <p className='card-text'><span className="fw-bolder">Gender:</span> {gender}</p>
                 <p className='card-text'><span className="fw-bolder">Size:</span> {size}</p>
+                <div className='d-flex justify-content-center'>
+                  <button onClick={this.handleSave} className="bg-transparent border-0">
+                    <img src='/images/save 2.png' alt='save' className='save'></img>
+                  </button>
+                </div>
               </div>
             </div>
         </div>
