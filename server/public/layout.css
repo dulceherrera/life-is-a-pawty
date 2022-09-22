@@ -68,6 +68,10 @@ header {
   width: 30%;
 }
 
+.save {
+  width: 40%;
+}
+
 @media screen and (min-width: 768px) {
   .navbar {
     height: 6rem;
@@ -130,5 +134,9 @@ header {
     height: 100%;
     margin-top: 0;
     margin-bottom: 0;
+  }
+
+  .save {
+    width: 30%;
   }
 }
