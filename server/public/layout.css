@@ -69,7 +69,11 @@ header {
 }
 
 .save {
-  width: 40%;
+  width: 60%;
+}
+
+.delete {
+  width: 70%;
 }
 
 @media screen and (min-width: 768px) {
@@ -137,6 +141,10 @@ header {
   }
 
   .save {
-    width: 30%;
+    width: 50%;
+  }
+
+  .delete {
+    width: 60%;
   }
 }

@@ -14,6 +14,7 @@ export default class Matches extends React.Component {
       size: ''
     };
     this.handleSave = this.handleSave.bind(this);
+    this.handleSearch = this.handleSearch.bind(this);
   }
 
   componentDidMount() {
@@ -85,8 +86,11 @@ export default class Matches extends React.Component {
                 <p className='card-text'><span className="fw-bolder">Gender:</span> {gender}</p>
                 <p className='card-text'><span className="fw-bolder">Size:</span> {size}</p>
                 <div className='d-flex justify-content-center'>
+                  <button onClick={this.handleSearch} className="bg-transparent border-0">
+                    <img src='/images/delete.png' alt='delete' className='delete'></img>
+                  </button>
                   <button onClick={this.handleSave} className="bg-transparent border-0">
-                    <img src='/images/save 2.png' alt='save' className='save'></img>
+                    <img src='/images/save-2.png' alt='save' className='save'></img>
                   </button>
                 </div>
               </div>
