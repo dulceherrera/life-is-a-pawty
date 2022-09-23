@@ -147,4 +147,17 @@ header {
   .delete {
     width: 60%;
   }
+
+  .pl-1 {
+    padding-left: 1rem;
+  }
+
+  .fa-bars {
+    padding-left: 1rem;
+    padding-top: 0.5rem;
+  }
+
+  .home-icon {
+    width: 20%;
+  }
 }

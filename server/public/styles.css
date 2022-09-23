@@ -131,4 +131,8 @@ p {
   .justify-content {
     justify-content: end;
   }
+
+  .fa-bars {
+    font-size: 4rem;
+  }
 }
