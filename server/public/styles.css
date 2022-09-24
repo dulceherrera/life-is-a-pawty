@@ -102,6 +102,50 @@ p {
   font-size: 2rem;
 }
 
+.font-quicksand {
+  font-family: Quicksand, sans-serif;
+}
+
+.offcanvas.offcanvas-start {
+  background-color: #ebdefc;
+  border: #8f27c0 solid 5px;
+}
+
+.text-align-center {
+  text-align: center;
+}
+
+.bg-pink {
+  background-color: #ebdefc;
+}
+
+.border-purple {
+  border: #8f27c0 solid 4px;
+  border-radius: 10px;
+}
+
+.fa-bars {
+  font-size: 2rem;
+}
+
+.card-img-top {
+  border-radius: 10px;
+}
+
+.card-text.text-saved {
+  font-size: 1rem;
+  font-weight: bold;
+}
+
+.card-title {
+  font-size: 1.8rem;
+  margin-bottom: 1.5rem;
+}
+
+.your-pets-title {
+  font-weight: bolder;
+}
+
 @media screen and (min-width: 768px) {
   .title-nav,
   .find-friend {
@@ -133,6 +177,16 @@ p {
   }
 
   .fa-bars {
-    font-size: 4rem;
+    font-size: 3rem;
+  }
+
+  .card-title {
+    font-size: 2.5rem;
+    font-weight: bolder;
+  }
+
+  .text-saved {
+    font-size: 1.5rem;
+    font-weight: bold;
   }
 }
