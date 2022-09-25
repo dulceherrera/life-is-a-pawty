@@ -42,6 +42,42 @@ app.get('/api/pets/:location/:type', (req, res, next) => {
     });
 });
 
+app.get('/api/petdetails/:petId', (req, res, next) => {
+  const petId = Number(req.params.petId);
+  if (!petId) {
+    throw new ClientError(400, 'petId must be a positive integer');
+  }
+  const sql = `
+    select "petId",
+            "name",
+            "photos",
+            "location",
+            "breed",
+            "age",
+            "gender",
+            "size",
+            "url",
+            "email",
+            "phone",
+            "state",
+            "postcode"
+       from "favoritesList"
+      where "petId"=$1`;
+
+  const params = [petId];
+  db.query(sql, params)
+    .then(result => {
+      const selectedPet = result.rows[0];
+      if (!selectedPet) {
+        throw new ClientError(404, `Cannot find pet with petId ${petId}`);
+      }
+      res.json(selectedPet);
+    })
+    .catch(err => {
+      console.error(err);
+    });
+});
+
 app.get('/api/matches', (req, res, next) => {
   const sql = `
   select "petId",
@@ -71,14 +107,19 @@ app.post('/api/favoritesList', (req, res, next) => {
   const breed = req.body.breed;
   const size = req.body.size;
   const gender = req.body.gender;
+  const url = req.body.url;
+  const email = req.body.email;
+  const phone = req.body.phone;
+  const state = req.body.state;
+  const postcode = req.body.postcode;
 
   const sql = `
-  insert into "favoritesList" ("petId", "userId", "name", "photos", "location", "age", "breed", "size", "gender")
-    values($1 ,$2 ,$3, $4, $5, $6, $7, $8, $9)
+  insert into "favoritesList" ("petId", "userId", "name", "photos", "location", "age", "breed", "size", "gender", "url", "email", "phone", "state", "postcode")
+    values($1 ,$2 ,$3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14)
     returning*
     `;
 
-  const params = [petId, userId, name, photos, location, age, breed, size, gender];
+  const params = [petId, userId, name, photos, location, age, breed, size, gender, url, email, phone, state, postcode];
   return db.query(sql, params)
     .then(result => {
       const [animal] = result.rows;

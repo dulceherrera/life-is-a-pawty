@@ -11,7 +11,12 @@ export default class Matches extends React.Component {
       age: '',
       breed: '',
       gender: '',
-      size: ''
+      size: '',
+      email: '',
+      phone: '',
+      state: '',
+      postcode: '',
+      url: ''
     };
     this.handleSave = this.handleSave.bind(this);
     this.handleSearch = this.handleSearch.bind(this);
@@ -40,7 +45,12 @@ export default class Matches extends React.Component {
           age: animal.age,
           breed: animal.breeds.primary,
           gender: animal.gender,
-          size: animal.size
+          size: animal.size,
+          email: animal.contact.email,
+          phone: animal.contact.phone,
+          state: animal.contact.address.state,
+          postcode: animal.contact.address.postcode,
+          url: animal.url
         }))
       .catch(error => {
         console.error(error);
@@ -60,7 +70,12 @@ export default class Matches extends React.Component {
         age: this.state.age,
         breed: this.state.breed,
         size: this.state.size,
-        gender: this.state.gender
+        gender: this.state.gender,
+        email: this.state.email,
+        phone: this.state.phone,
+        state: this.state.state,
+        postcode: this.state.postcode,
+        url: this.state.url
       })
     })
       .then(res => res.json())
@@ -73,7 +88,7 @@ export default class Matches extends React.Component {
   render() {
     const { photos, name, location, age, breed, gender, size } = this.state;
     return (
-      <div className='card card-margin bg-transparent'>
+      <div className= 'card card-margin bg-transparent'>
         <div className='row g-0'>
           <div className='col-md-8 d-flex justify-content'>
             <img src={photos} className='img-fluid h-80%'></img>

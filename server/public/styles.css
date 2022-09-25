@@ -79,6 +79,7 @@ select {
 
 .img-fluid {
   border-radius: 10px;
+  margin-bottom: 0;
 }
 
 p {
@@ -146,6 +147,15 @@ p {
   font-weight: bolder;
 }
 
+.card-body.text-center-mob {
+  text-align: center;
+}
+
+.card-text.details-text {
+  font-size: 1.2rem;
+  font-weight: bolder;
+}
+
 @media screen and (min-width: 768px) {
   .title-nav,
   .find-friend {
@@ -188,5 +198,17 @@ p {
   .text-saved {
     font-size: 1.5rem;
     font-weight: bold;
+  }
+
+  .card-title.details-title {
+    font-size: 2rem;
+  }
+
+  .card-text.details-text {
+    font-size: 1.2rem;
+  }
+
+  .card-body.text-center-mob {
+    text-align: left;
   }
 }

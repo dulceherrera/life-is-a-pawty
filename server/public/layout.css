@@ -112,6 +112,18 @@ header {
   margin-bottom: 3rem;
 }
 
+.col-md-8.width-80 {
+  width: 80%;
+}
+
+.col-md-4.width-80 {
+  width: 80%;
+}
+
+.card-body.margin-5 {
+  margin-top: 0.5rem;
+}
+
 @media screen and (min-width: 768px) {
   .navbar {
     height: 6rem;
@@ -166,7 +178,6 @@ header {
   .w-85 {
     width: 100%;
     margin: auto;
-    height: 100%;
   }
 
   .img-fluid {
@@ -223,5 +234,21 @@ header {
 
   .offcanvas {
     max-width: 100%;
+  }
+
+  .g-3.details-card {
+    margin-top: 8rem;
+  }
+
+  .col-md-8.width-80 {
+    width: min-content;
+  }
+
+  .col-md-4.width-80 {
+    width: max-content;
+  }
+
+  .card-body.margin-5 {
+    margin-top: 0;
   }
 }
