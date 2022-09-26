@@ -30,9 +30,10 @@ export default class SavedPets extends React.Component {
       {this.state.animals.map(animal => {
         return (
           <div key={animal.petId} className='col'>
+            <a href={`#petdetails?petId=${animal.petId}`} className='text-decoration-none text-dark'>
             <div className='h-50 card bg-transparent'>
               <img src={animal.photos} className='card-img-top' alt='saved-pet'></img>
-              <div className='card-body font-quicksand text-align-center bg-pink border-purple'>
+              <div className='card-body margin-5 font-quicksand text-align-center bg-pink border-purple'>
               <h2 className='card-title'>{animal.name}</h2>
               <p className='card-text text-saved'><span className="fw-bolder">Location: </span> {animal.location}</p>
               <p className='card-text text-saved'><span className="fw-bolder">Age: </span> {animal.age}</p>
@@ -40,6 +41,7 @@ export default class SavedPets extends React.Component {
               <p className='card-text text-saved'><span className="fw-bolder">Gender:</span> {animal.gender}</p>
               </div>
             </div>
+            </a>
           </div>
         );
       })}

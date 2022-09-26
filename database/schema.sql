@@ -13,7 +13,12 @@ CREATE TABLE "public"."favoritesList" (
 	"age" TEXT NOT NULL,
 	"breed" TEXT NOT NULL,
 	"size" TEXT NOT NULL,
-	"gender" TEXT NOT NULL
+	"gender" TEXT NOT NULL,
+  "url" TEXT NOT NULL,
+  "email" TEXT NULL,
+  "phone" VARCHAR NULL,
+  "state" TEXT NOT NULL,
+  "postcode" integer NOT NULL
 ) WITH (
   OIDS=FALSE
 );
