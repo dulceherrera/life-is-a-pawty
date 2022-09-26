@@ -4,6 +4,7 @@ import Navbar from './components/navbar';
 import PageContainer from './components/pagecontainer';
 import parseRoute from './lib/parse-route';
 import Matches from './pages/matches';
+import SavedPets from './pages/saved';
 
 export default class App extends React.Component {
   constructor(props) {
@@ -27,6 +28,9 @@ export default class App extends React.Component {
     }
     if (route.path === 'matches') {
       return <Matches />;
+    }
+    if (route.path === 'saved-pets') {
+      return <SavedPets />;
     }
   }
 

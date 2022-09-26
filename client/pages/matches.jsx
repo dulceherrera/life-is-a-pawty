@@ -5,7 +5,7 @@ export default class Matches extends React.Component {
     super(props);
     this.state = {
       id: '',
-      photo: '',
+      photos: '',
       name: '',
       location: '',
       age: '',
@@ -34,7 +34,7 @@ export default class Matches extends React.Component {
       .then(animal =>
         this.setState({
           id: animal.id,
-          photo: animal.primary_photo_cropped.small,
+          photos: animal.primary_photo_cropped.medium,
           name: animal.name,
           location: animal.contact.address.city,
           age: animal.age,
@@ -55,6 +55,7 @@ export default class Matches extends React.Component {
         petId: Number(this.state.id),
         userId: 1,
         name: this.state.name,
+        photos: this.state.photos,
         location: this.state.location,
         age: this.state.age,
         breed: this.state.breed,
@@ -70,12 +71,12 @@ export default class Matches extends React.Component {
   }
 
   render() {
-    const { photo, name, location, age, breed, gender, size } = this.state;
+    const { photos, name, location, age, breed, gender, size } = this.state;
     return (
       <div className='card card-margin bg-transparent'>
         <div className='row g-0'>
           <div className='col-md-8 d-flex justify-content'>
-            <img src={photo} className='img-fluid h-80%'></img>
+            <img src={photos} className='img-fluid h-80%'></img>
           </div>
             <div className='col-md-1'>
               <div className='p-2 pet-info card-body w-85'>

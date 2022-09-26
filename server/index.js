@@ -20,7 +20,7 @@ const db = new pg.Pool({
 app.use(staticMiddleware);
 app.use(jsonMiddleware);
 
-app.get('/api/pets/:location/:type', (req, res) => {
+app.get('/api/pets/:location/:type', (req, res, next) => {
   const { location } = req.params;
   const { type } = req.params;
   if (!location || !type) {
@@ -42,10 +42,30 @@ app.get('/api/pets/:location/:type', (req, res) => {
     });
 });
 
+app.get('/api/matches', (req, res, next) => {
+  const sql = `
+  select "petId",
+         "userId",
+         "name",
+         "photos",
+         "location",
+         "breed",
+         "gender",
+         "age"
+  from "favoritesList"`;
+
+  db.query(sql)
+    .then(result => res.json(result.rows))
+    .catch(err => {
+      console.error(err);
+    });
+});
+
 app.post('/api/favoritesList', (req, res, next) => {
   const petId = req.body.petId;
   const userId = 1;
   const name = req.body.name;
+  const photos = JSON.parse(JSON.stringify(req.body.photos));
   const location = req.body.location;
   const age = req.body.age;
   const breed = req.body.breed;
@@ -53,12 +73,12 @@ app.post('/api/favoritesList', (req, res, next) => {
   const gender = req.body.gender;
 
   const sql = `
-  insert into "favoritesList" ("petId", "userId", "name", "location", "age", "breed", "size", "gender")
-    values($1 ,$2 ,$3, $4, $5, $6, $7, $8)
+  insert into "favoritesList" ("petId", "userId", "name", "photos", "location", "age", "breed", "size", "gender")
+    values($1 ,$2 ,$3, $4, $5, $6, $7, $8, $9)
     returning*
     `;
 
-  const params = [petId, userId, name, location, age, breed, size, gender];
+  const params = [petId, userId, name, photos, location, age, breed, size, gender];
   return db.query(sql, params)
     .then(result => {
       const [animal] = result.rows;

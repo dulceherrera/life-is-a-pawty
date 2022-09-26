@@ -8,6 +8,7 @@ CREATE TABLE "public"."favoritesList" (
 	"petId" integer NOT NULL,
 	"userId" integer NOT NULL,
 	"name" TEXT NOT NULL,
+  "photos" TEXT NOT NULL,
 	"location" TEXT NOT NULL,
 	"age" TEXT NOT NULL,
 	"breed" TEXT NOT NULL,
