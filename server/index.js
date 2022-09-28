@@ -20,7 +20,7 @@ const db = new pg.Pool({
 app.use(staticMiddleware);
 app.use(jsonMiddleware);
 
-app.get('/api/pets/:location/:type', (req, res, next) => {
+app.get('/api/matches/:location/:type', (req, res, next) => {
   const { location } = req.params;
   const { type } = req.params;
   if (!location || !type) {
@@ -78,7 +78,7 @@ app.get('/api/petdetails/:petId', (req, res, next) => {
     });
 });
 
-app.get('/api/matches', (req, res, next) => {
+app.get('/api/saved', (req, res, next) => {
   const sql = `
   select "petId",
          "userId",
@@ -128,6 +128,33 @@ app.post('/api/favoritesList', (req, res, next) => {
     .catch(err => {
       console.error(err);
     });
+});
+
+app.delete('api/petdetails/:petId', (req, res, next) => {
+  const petId = Number(req.params.id);
+  if (!petId) {
+    throw new ClientError(400, 'petId must be a positive integer');
+  }
+
+  const sql = `
+  delete from "favoritesList
+        where "petId"= $1
+        returning *`;
+
+  const params = [petId];
+  db.query(sql, params)
+    .then(result => {
+      const [deletePet] = result.rows;
+      if (!deletePet) {
+        throw new ClientError(404, `Cannot find pet with petId ${petId}`);
+      } else {
+        res.sendStatus(204);
+      }
+    })
+    .catch(err => {
+      console.error(err);
+    });
+
 });
 
 app.use(errorMiddleware);

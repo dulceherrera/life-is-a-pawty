@@ -32,7 +32,7 @@ export default class Matches extends React.Component {
     const location = params.get('location');
     const type = params.get('type');
 
-    fetch(`/api/pets/${location}/${type}`, {
+    fetch(`/api/matches/${location}/${type}`, {
       method: 'GET'
     })
       .then(response => response.json())
