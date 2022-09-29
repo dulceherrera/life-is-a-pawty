@@ -130,16 +130,16 @@ app.post('/api/favoritesList', (req, res, next) => {
     });
 });
 
-app.delete('api/petdetails/:petId', (req, res, next) => {
-  const petId = Number(req.params.id);
+app.delete('/api/petdetails/:petId', (req, res, next) => {
+  const petId = Number(req.params.petId);
   if (!petId) {
     throw new ClientError(400, 'petId must be a positive integer');
   }
 
   const sql = `
-  delete from "favoritesList
+  delete from "favoritesList"
         where "petId"= $1
-        returning *`;
+        returning * `;
 
   const params = [petId];
   db.query(sql, params)

@@ -51,8 +51,8 @@ export default class SavedPets extends React.Component {
       {this.state.animals.map(animal => {
         return (
           <div key={animal.petId} className='col'>
-            <div className='card'>
-              <button className='position-absolute top-0 start-0 bg-transparent' onClick={this.handleDelete} id={animal.petId}>
+            <div className='card bg-transparent'>
+              <button className='position-absolute top-0 start-0 bg-transparent border-0 button-heart' onClick={this.handleDelete} id={animal.petId}>
                 <i className='fa-solid fa-heart'></i>
               </button>
               <a href={`#petdetails?petId=${animal.petId}`} className='text-decoration-none text-dark'>
