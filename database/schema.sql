@@ -9,7 +9,7 @@ CREATE TABLE "public"."favoritesList" (
 	"userId" integer NOT NULL,
 	"name" TEXT NOT NULL,
   "photos" TEXT NOT NULL,
-	"location" TEXT NOT NULL,
+	"city" TEXT NOT NULL,
 	"age" TEXT NOT NULL,
 	"breed" TEXT NOT NULL,
 	"size" TEXT NOT NULL,

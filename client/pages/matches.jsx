@@ -7,7 +7,7 @@ export default class Matches extends React.Component {
       id: '',
       photos: '',
       name: '',
-      location: '',
+      city: '',
       age: '',
       breed: '',
       gender: '',
@@ -41,7 +41,7 @@ export default class Matches extends React.Component {
           id: animal.id,
           photos: animal.primary_photo_cropped.medium,
           name: animal.name,
-          location: animal.contact.address.city,
+          city: animal.contact.address.city,
           age: animal.age,
           breed: animal.breeds.primary,
           gender: animal.gender,
@@ -66,7 +66,7 @@ export default class Matches extends React.Component {
         userId: 1,
         name: this.state.name,
         photos: this.state.photos,
-        location: this.state.location,
+        city: this.state.city,
         age: this.state.age,
         breed: this.state.breed,
         size: this.state.size,
@@ -86,7 +86,7 @@ export default class Matches extends React.Component {
   }
 
   render() {
-    const { photos, name, location, age, breed, gender, size } = this.state;
+    const { photos, name, city, age, breed, gender, size } = this.state;
     return (
       <div className= 'card card-margin bg-transparent'>
         <div className='row g-0'>
@@ -96,7 +96,7 @@ export default class Matches extends React.Component {
             <div className='col-md-1'>
               <div className='p-2 pet-info card-body w-85'>
                 <h2 className='pet-title fw-bolder card-title'>{name}</h2>
-                <p className='card-text'><span className="fw-bolder">Location: </span> {location}</p>
+                <p className='card-text'><span className="fw-bolder">Location: </span> {city}</p>
                 <p className='card-text'><span className="fw-bolder">Age: </span> {age}</p>
                 <p className='card-text'><span className="fw-bolder">Breed:</span> {breed}</p>
                 <p className='card-text'><span className="fw-bolder">Gender:</span> {gender}</p>

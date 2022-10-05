@@ -1,32 +1,63 @@
 import React from 'react';
+import Maps from '../components/maps';
+import Geocode from 'react-geocode';
+
+const styles = {
+  image: {
+    width: '100%',
+    height: '100%',
+    objectFit: 'contain'
+  }
+};
 
 export default class PetDetails extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      animal: null
+      animal: null,
+      map: null
     };
   }
 
   componentDidMount() {
+    this.renderDetails();
+  }
+
+  renderDetails() {
     fetch(`/api/petdetails/${this.props.petId}`)
       .then(res => res.json())
-      .then(animal => this.setState({ animal }));
+      .then(animal => {
+        this.setState({ animal });
+      })
+      .then(() => this.getCoordinates());
+  }
+
+  getCoordinates() {
+    if (!this.state.animal) return null;
+    const { city, state, postcode } = this.state.animal;
+    Geocode.fromAddress(`${city} ${state} ${postcode}`, process.env.GOOGLEMAPS_KEY)
+      .then(response => {
+        const { lat, long } = response.results[0].geometry.location;
+        this.setState({
+          map: { lat, long }
+        });
+      })
+      .catch(err => console.error(err));
   }
 
   render() {
     if (!this.state.animal) return null;
-    const { name, photos, location, age, breed, size, url, email, phone, gender, state, postcode } = this.state.animal;
+    const { name, photos, city, age, breed, size, url, email, phone, gender, state, postcode } = this.state.animal;
     return (
-      <div className='card bg-transparent d-flex'>
-        <div className='row g-3 details-card justify-content-center'>
-          <div className='col-md-4 width-80 bg-transparent d-flex'>
-            <img src={photos} className='img-fluid' alt={name}></img>
-          </div>
-          <div className='col-md-8 width-80'>
-            <div className='card-body text-center-mob font-quicksand bg-pink border-purple'>
+      <div className='card d-flex bg-pink border-purple'>
+        <div className='card-body'>
+          <div className='row details-card justify-content-center g-3'>
+            <div className='col-12-col-sm-6 col-md-5'>
+              <img className='pt-5' src={photos} alt={name} style={styles.photos}></img>
+            </div>
+            <div className='col-12 col-sm-6 col-md-7 font-quicksand text-center-mob'>
               <h2 className='card-title details-title'>{name}</h2>
-              <p className='card-text details-text'><span className='fw-bolder'>Location:</span> {location}, {state}. {postcode}</p>
+              <p className='card-text details-text'><span className='fw-bolder'>Location:</span> {city}, {state}. {postcode}</p>
               <p className='card-text details-text'><span className='fw-bolder'>Breed:</span> {breed}</p>
               <p className='card-text details-text'><span className='fw-bolder'>Age:</span> {age}</p>
               <p className='card-text details-text'><span className='fw-bolder'>Gender:</span> {gender}</p>
@@ -34,6 +65,11 @@ export default class PetDetails extends React.Component {
               <p className='card-text details-text'><span className='fw-bolder'>Url:</span><a href={url}> {url}</a></p>
               <p className='card-text details-text'><span className='fw-bolder'>Email:</span> {email}</p>
               <p className='card-text details-text'><span className='fw-bolder'>Phone:</span> {phone !== null ? [phone] : 'Phone number not provided'}</p>
+            </div>
+            <div className='font-quicksand text-center-mob'>
+              <p className='card-text details-text'><span className='fw-bolder'>Pet Address:</span></p>
+              <Maps coordinates={this.state.map} />
+              <p className='card-text details-text'>{city}, {state}, {postcode}</p>
               <a href='#saved-pets'>
                 <i className="fa-solid fa-arrow-left-long text-dark"></i>
               </a>

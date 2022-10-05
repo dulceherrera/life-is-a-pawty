@@ -51,7 +51,7 @@ app.get('/api/petdetails/:petId', (req, res, next) => {
     select "petId",
             "name",
             "photos",
-            "location",
+            "city",
             "breed",
             "age",
             "gender",
@@ -84,7 +84,7 @@ app.get('/api/saved', (req, res, next) => {
          "userId",
          "name",
          "photos",
-         "location",
+         "city",
          "breed",
          "gender",
          "age"
@@ -102,7 +102,7 @@ app.post('/api/favoritesList', (req, res, next) => {
   const userId = 1;
   const name = req.body.name;
   const photos = JSON.parse(JSON.stringify(req.body.photos));
-  const location = req.body.location;
+  const city = req.body.city;
   const age = req.body.age;
   const breed = req.body.breed;
   const size = req.body.size;
@@ -114,12 +114,12 @@ app.post('/api/favoritesList', (req, res, next) => {
   const postcode = req.body.postcode;
 
   const sql = `
-  insert into "favoritesList" ("petId", "userId", "name", "photos", "location", "age", "breed", "size", "gender", "url", "email", "phone", "state", "postcode")
+  insert into "favoritesList" ("petId", "userId", "name", "photos", "city", "age", "breed", "size", "gender", "url", "email", "phone", "state", "postcode")
     values($1 ,$2 ,$3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14)
     returning*
     `;
 
-  const params = [petId, userId, name, photos, location, age, breed, size, gender, url, email, phone, state, postcode];
+  const params = [petId, userId, name, photos, city, age, breed, size, gender, url, email, phone, state, postcode];
   return db.query(sql, params)
     .then(result => {
       const [animal] = result.rows;
