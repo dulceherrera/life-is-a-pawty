@@ -18,7 +18,8 @@ CREATE TABLE "public"."favoritesList" (
   "email" TEXT NULL,
   "phone" VARCHAR NULL,
   "state" TEXT NOT NULL,
-  "postcode" integer NOT NULL
+  "postcode" integer NOT NULL,
+  "address1" TEXT NULL
 ) WITH (
   OIDS=FALSE
 );
