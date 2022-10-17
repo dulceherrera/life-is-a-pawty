@@ -133,7 +133,8 @@ p {
   border-radius: 10px;
 }
 
-.card-text.text-saved {
+.card-text.text-saved,
+.sign-in-text {
   font-size: 1rem;
   font-weight: bold;
 }
@@ -167,6 +168,27 @@ p {
 input::placeholder {
   color: white;
   opacity: 1;
+}
+
+.underline-dark {
+  color: black;
+}
+
+.sign-up {
+  font-size: 2.5rem;
+}
+
+.username-input,
+.password-input, {
+  font-size: 1.3rem;
+}
+
+.btn-lg {
+  font-size: 1rem;
+}
+
+.fa-user-plus {
+  font-size: 2.3rem;
 }
 
 @media screen and (min-width: 768px) {
@@ -238,9 +260,5 @@ input::placeholder {
 
   .sign-up {
     font-size: 4rem;
-  }
-
-  .underline-dark {
-    color: black;
   }
 }

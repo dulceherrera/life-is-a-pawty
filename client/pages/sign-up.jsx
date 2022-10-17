@@ -76,7 +76,7 @@ export default class SignUp extends React.Component {
             </Form>
             <div>
               <a href='' className='underline-dark'>
-                <h5 className='d-flex justify-content-center font-quicksand fw-bolder text-dark'>HAVE AN ACCOUNT? SIGN IN</h5>
+                <h5 className='d-flex justify-content-center font-quicksand fw-bolder text-dark sign-in-text'>HAVE AN ACCOUNT? SIGN IN</h5>
               </a>
             </div>
           </Card.Body>

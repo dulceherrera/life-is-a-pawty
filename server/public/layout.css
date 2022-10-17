@@ -124,6 +124,18 @@ header {
   width: inherit;
 }
 
+.card-width {
+  width: 80%;
+}
+
+.mb-6rem {
+  margin-bottom: 4rem;
+}
+
+.mr-1 {
+  margin-right: 1rem;
+}
+
 @media screen and (min-width: 768px) {
   .navbar {
     height: 6rem;
@@ -262,7 +274,7 @@ header {
   }
 
   .card-width {
-    width: 800px;
+    width: 60%;
   }
 
   .height-card-sign-up {

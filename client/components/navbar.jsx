@@ -20,7 +20,7 @@ export default function Navbar(props) {
               <h3 className='font-quicksand'>Your Pets</h3>
             </a>
             <a href='#sign-up' className='text-black d-flex align-items-center text-decoration-none drawer-text'>
-              <i className='fa-solid fa-user-plus pe-4'></i>
+              <i className='fa-solid fa-user-plus mr-1'></i>
               <h3 className='font-quicksand'>Sign Up</h3>
             </a>
           </div>
