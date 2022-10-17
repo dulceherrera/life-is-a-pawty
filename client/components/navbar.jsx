@@ -19,6 +19,10 @@ export default function Navbar(props) {
               <img src='/images/your-pets.png' alt='your-pets-icon' className="your-pets-icon"></img>
               <h3 className='font-quicksand'>Your Pets</h3>
             </a>
+            <a href='#sign-up' className='text-black d-flex align-items-center text-decoration-none drawer-text'>
+              <i className='fa-solid fa-user-plus pe-4'></i>
+              <h3 className='font-quicksand'>Sign Up</h3>
+            </a>
           </div>
         </div>
       </div>

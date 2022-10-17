@@ -4,6 +4,7 @@ const staticMiddleware = require('./static-middleware');
 const errorMiddleware = require('./error-middleware');
 const jsonMiddleware = express.json();
 const ClientError = require('./client-error');
+const argon2 = require('argon2');
 
 const app = express();
 
@@ -157,6 +158,27 @@ app.delete('/api/petdetails/:petId', (req, res, next) => {
 
 });
 
+app.post('/api/auth/sign-up', (req, res, next) => {
+  const { username, password } = req.body;
+  if (!username || !password) {
+    throw new ClientError(400, 'username and password are require fields');
+  }
+  argon2.hash(password)
+    .then(hashedPassword => {
+      const sql = `
+        insert into "users" ("username", "password", "joinedAt")
+          values ($1, $2, now())
+          returning "userId", "username", "joinedAt"`;
+      const params = [username, hashedPassword];
+      db.query(sql, params)
+        .then(result => {
+          const [user] = result.rows;
+          res.status(201).json(user);
+        })
+        .catch(err => next(err));
+    })
+    .catch(err => next(err));
+});
 app.use(errorMiddleware);
 
 app.listen(process.env.PORT, () => {

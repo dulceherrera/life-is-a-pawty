@@ -210,7 +210,8 @@ header {
     margin-right: 1rem;
   }
 
-  .mb-4rem {
+  .mb-4rem,
+  .drawer-text {
     margin-bottom: 4rem;
   }
 
@@ -258,5 +259,17 @@ header {
 
   .w-inherit {
     width: auto;
+  }
+
+  .card-width {
+    width: 800px;
+  }
+
+  .height-card-sign-up {
+    height: 80%;
+  }
+
+  .mb-6rem {
+    margin-bottom: 6rem;
   }
 }
