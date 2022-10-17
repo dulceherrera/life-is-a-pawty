@@ -139,7 +139,7 @@ p {
 }
 
 .card-title {
-  font-size: 1.8rem;
+  font-size: 2rem;
   margin-bottom: 1.5rem;
 }
 
@@ -147,13 +147,12 @@ p {
   font-weight: bolder;
 }
 
-.card-body.text-center-mob {
+.text-center-mob {
   text-align: center;
 }
 
 .card-text.details-text {
-  font-size: 1.2rem;
-  font-weight: bolder;
+  font-size: 1.4rem;
 }
 
 .fa-heart {
@@ -200,20 +199,20 @@ p {
     font-weight: bolder;
   }
 
-  .text-saved {
+  .card-text.text-saved {
     font-size: 1.5rem;
-    font-weight: bold;
+    font-weight: 400;
   }
 
   .card-title.details-title {
-    font-size: 2rem;
+    font-size: 2.5rem;
   }
 
   .card-text.details-text {
-    font-size: 1.2rem;
+    font-size: 1.5rem;
   }
 
-  .card-body.text-center-mob {
+  .text-center-mob {
     text-align: left;
   }
 

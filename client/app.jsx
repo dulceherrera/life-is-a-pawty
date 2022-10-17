@@ -44,7 +44,7 @@ export default class App extends React.Component {
       <>
         <Navbar />
         <PageContainer>
-        {this.showMatches()}
+          {this.showMatches()}
         </PageContainer>
       </>
     );

@@ -42,6 +42,23 @@ app.get('/api/matches/:location/:type', (req, res, next) => {
     });
 });
 
+app.get('/api/saved', (req, res, next) => {
+  const sql = `
+  select "petId",
+         "userId",
+         "name",
+         "photos",
+         "city",
+         "breed",
+         "gender",
+         "age"
+  from "favoritesList"`;
+
+  db.query(sql)
+    .then(result => res.json(result.rows))
+    .catch(err => next(err));
+});
+
 app.get('/api/petdetails/:petId', (req, res, next) => {
   const petId = Number(req.params.petId);
   if (!petId) {
@@ -51,7 +68,8 @@ app.get('/api/petdetails/:petId', (req, res, next) => {
     select "petId",
             "name",
             "photos",
-            "location",
+            "city",
+            "address1",
             "breed",
             "age",
             "gender",
@@ -78,31 +96,13 @@ app.get('/api/petdetails/:petId', (req, res, next) => {
     });
 });
 
-app.get('/api/saved', (req, res, next) => {
-  const sql = `
-  select "petId",
-         "userId",
-         "name",
-         "photos",
-         "location",
-         "breed",
-         "gender",
-         "age"
-  from "favoritesList"`;
-
-  db.query(sql)
-    .then(result => res.json(result.rows))
-    .catch(err => {
-      console.error(err);
-    });
-});
-
 app.post('/api/favoritesList', (req, res, next) => {
   const petId = req.body.petId;
   const userId = 1;
   const name = req.body.name;
   const photos = JSON.parse(JSON.stringify(req.body.photos));
-  const location = req.body.location;
+  const city = req.body.city;
+  const address1 = req.body.address1;
   const age = req.body.age;
   const breed = req.body.breed;
   const size = req.body.size;
@@ -114,12 +114,12 @@ app.post('/api/favoritesList', (req, res, next) => {
   const postcode = req.body.postcode;
 
   const sql = `
-  insert into "favoritesList" ("petId", "userId", "name", "photos", "location", "age", "breed", "size", "gender", "url", "email", "phone", "state", "postcode")
-    values($1 ,$2 ,$3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14)
+  insert into "favoritesList" ("petId", "userId", "name", "photos", "city", "address1", "age", "breed", "size", "gender", "url", "email", "phone", "state", "postcode")
+    values($1 ,$2 ,$3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15)
     returning*
     `;
 
-  const params = [petId, userId, name, photos, location, age, breed, size, gender, url, email, phone, state, postcode];
+  const params = [petId, userId, name, photos, city, address1, age, breed, size, gender, url, email, phone, state, postcode];
   return db.query(sql, params)
     .then(result => {
       const [animal] = result.rows;

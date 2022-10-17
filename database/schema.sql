@@ -9,7 +9,7 @@ CREATE TABLE "public"."favoritesList" (
 	"userId" integer NOT NULL,
 	"name" TEXT NOT NULL,
   "photos" TEXT NOT NULL,
-	"location" TEXT NOT NULL,
+	"city" TEXT NOT NULL,
 	"age" TEXT NOT NULL,
 	"breed" TEXT NOT NULL,
 	"size" TEXT NOT NULL,
@@ -18,7 +18,8 @@ CREATE TABLE "public"."favoritesList" (
   "email" TEXT NULL,
   "phone" VARCHAR NULL,
   "state" TEXT NOT NULL,
-  "postcode" integer NOT NULL
+  "postcode" integer NOT NULL,
+  "address1" TEXT NULL
 ) WITH (
   OIDS=FALSE
 );

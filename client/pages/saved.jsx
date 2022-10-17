@@ -59,7 +59,7 @@ export default class SavedPets extends React.Component {
                 <img src={animal.photos} className='card-img-top' alt='saved-pet'></img>
                 <div className='card-body margin-5 font-quicksand text-align-center bg-pink border-purple'>
                   <h2 className='card-title'>{animal.name}</h2>
-                  <p className='card-text text-saved'><span className="fw-bolder">Location: </span> {animal.location}</p>
+                  <p className='card-text text-saved'><span className="fw-bolder">Location: </span> {animal.city}</p>
                   <p className='card-text text-saved'><span className="fw-bolder">Age: </span> {animal.age}</p>
                   <p className='card-text text-saved'><span className="fw-bolder">Breed:</span> {animal.breed}</p>
                   <p className='card-text text-saved'><span className="fw-bolder">Gender:</span> {animal.gender}</p>

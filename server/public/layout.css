@@ -96,10 +96,6 @@ header {
   height: 30%;
 }
 
-.card-body {
-  margin-top: 1.5rem;
-}
-
 .mt-5 {
   margin-top: 1rem !important;
 }
@@ -122,6 +118,10 @@ header {
 
 .card-body.margin-5 {
   margin-top: 0.5rem;
+}
+
+.w-inherit {
+  width: inherit;
 }
 
 @media screen and (min-width: 768px) {
@@ -237,7 +237,7 @@ header {
   }
 
   .g-3.details-card {
-    margin-top: 8rem;
+    margin-top: 2rem;
   }
 
   .col-md-8.width-80 {
@@ -250,5 +250,13 @@ header {
 
   .card-body.margin-5 {
     margin-top: 0;
+  }
+
+  .col-md-5 {
+    width: 40%;
+  }
+
+  .w-inherit {
+    width: auto;
   }
 }
