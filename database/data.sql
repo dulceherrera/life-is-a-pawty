@@ -1,4 +1,4 @@
-insert into "users" ("userId", "username", "password", "joinedAt")
+insert into "users" ("userId", "username", "hashedPassword", "joinedAt")
 values (1, 'guest', '1234', NOW())
 
 /*Temporary user

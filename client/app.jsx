@@ -7,6 +7,7 @@ import Matches from './pages/matches';
 import SavedPets from './pages/saved';
 import PetDetails from './pages/pet-details';
 import SignUp from './pages/sign-up';
+import Signin from './pages/sign-in';
 
 export default class App extends React.Component {
   constructor(props) {
@@ -40,6 +41,9 @@ export default class App extends React.Component {
     }
     if (route.path === 'sign-up') {
       return <SignUp />;
+    }
+    if (route.path === 'sign-in') {
+      return <Signin />;
     }
   }
 
