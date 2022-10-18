@@ -6,6 +6,7 @@ import parseRoute from './lib/parse-route';
 import Matches from './pages/matches';
 import SavedPets from './pages/saved';
 import PetDetails from './pages/pet-details';
+import SignUp from './pages/sign-up';
 
 export default class App extends React.Component {
   constructor(props) {
@@ -36,6 +37,9 @@ export default class App extends React.Component {
     if (route.path === 'petdetails') {
       const petId = route.params.get('petId');
       return <PetDetails petId={petId} />;
+    }
+    if (route.path === 'sign-up') {
+      return <SignUp />;
     }
   }
 
