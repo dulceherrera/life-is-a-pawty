@@ -16,14 +16,15 @@ export default class Matches extends React.Component {
       phone: '',
       state: '',
       postcode: '',
-      url: ''
+      url: '',
+      userId: null
     };
     this.handleSave = this.handleSave.bind(this);
     this.handleSearch = this.handleSearch.bind(this);
   }
 
   componentDidMount() {
-    this.handleSearch();
+    this.handleSearch(false);
   }
 
   handleSearch() {
@@ -61,10 +62,13 @@ export default class Matches extends React.Component {
   handleSave() {
     fetch('/api/favoritesList', {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
+      headers: {
+        'Content-Type': 'application/json',
+        'X-Access-Token': localStorage.getItem('jwt')
+      },
       body: JSON.stringify({
         petId: Number(this.state.id),
-        userId: 1,
+        userId: Number(this.state.userId),
         name: this.state.name,
         photos: this.state.photos,
         city: this.state.city,
@@ -81,7 +85,7 @@ export default class Matches extends React.Component {
       })
     })
       .then(res => res.json())
-      .then(() => this.handleSearch())
+      .then(() => this.handleSearch(true))
       .catch(err => {
         console.error(err);
       });

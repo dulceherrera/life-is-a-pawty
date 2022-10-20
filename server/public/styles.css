@@ -187,14 +187,15 @@ input::placeholder {
   font-size: 1rem;
 }
 
-.fa-user-plus {
+.fa-user-plus,
+.fa-right-to-bracket {
   font-size: 2.3rem;
 }
 
 @media screen and (min-width: 768px) {
   .title-nav,
   .find-friend {
-    font-size: 3.5rem;
+    font-size: 3rem;
   }
 
   .search-height,
@@ -224,7 +225,7 @@ input::placeholder {
   }
 
   .fa-bars {
-    font-size: 3rem;
+    font-size: 2.5rem;
   }
 
   .card-title {
@@ -254,11 +255,23 @@ input::placeholder {
     font-size: 5rem;
   }
 
-  .fa-user-plus {
+  .fa-user-plus,
+  .fa-right-to-bracket {
     font-size: 3.5rem;
   }
 
   .sign-up {
-    font-size: 4rem;
+    font-size: 3rem;
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  .title-nav,
+  .find-friend {
+    font-size: 3.5rem;
+  }
+
+  .fa-bars {
+    font-size: 3rem;
   }
 }

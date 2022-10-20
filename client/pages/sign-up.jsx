@@ -10,10 +10,10 @@ export default class SignUp extends React.Component {
     };
     this.handleUsername = this.handleUsername.bind(this);
     this.handlePassword = this.handlePassword.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleSignUp = this.handleSignUp.bind(this);
   }
 
-  handleSubmit(event) {
+  handleSignUp(event) {
     event.preventDefault();
     fetch('/api/auth/sign-up', {
       method: 'POST',
@@ -25,6 +25,7 @@ export default class SignUp extends React.Component {
         username: '',
         password: ''
       }))
+      .then(() => alert('Sign up successfully!'))
       .catch(err => {
         console.error(err);
       });
@@ -47,7 +48,7 @@ export default class SignUp extends React.Component {
 
         <Card className='m-auto card-width height-card-sign-up'>
           <Card.Body className='bg-pink border-purple'>
-            <Form className='p-4' onSubmit={this.handleSubmit}>
+            <Form className='p-4' onSubmit={this.handleSignUp}>
               <Form.Group controlId='formUsername' className='mb-4'>
                 <Form.Control
                   className=' d-flex justify-content-center text-align-center bg-lavander username-input font-quicksand'
@@ -75,7 +76,7 @@ export default class SignUp extends React.Component {
               </Button>
             </Form>
             <div>
-              <a href='' className='underline-dark'>
+              <a href='#sign-in' className='underline-dark'>
                 <h5 className='d-flex justify-content-center font-quicksand fw-bolder text-dark sign-in-text'>HAVE AN ACCOUNT? SIGN IN</h5>
               </a>
             </div>

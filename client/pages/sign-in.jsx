@@ -17,16 +17,23 @@ export default class Signin extends React.Component {
     event.preventDefault();
     fetch('/api/auth/sign-in', {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
+      headers: {
+        'Content-Type': 'application/json'
+      },
       body: JSON.stringify(this.state)
     })
       .then(res => res.json())
-      .then(result =>
+      .then(result => {
         this.setState({
           username: '',
           password: ''
-        }))
-      .catch(err => { console.error(err); });
+        });
+        window.localStorage.setItem('jwt', result.token);
+      })
+      .catch(err => {
+        console.error(err);
+      });
+    window.location.hash = '#';
   }
 
   handleUsername(event) {
@@ -67,13 +74,14 @@ export default class Signin extends React.Component {
                   value={this.state.password} />
               </Form.Group>
               <Button
+                variant="success"
                 type='submit'
                 size='lg'
                 className='border-0 rounded-pill d-grid ps-5 pe-5 m-auto font-quicksand fw-bolder font-button'>SIGN IN</Button>
             </Form>
             <div>
               <a href='#sign-up' className='underline-dark'>
-                <h5 className='d-flex justify-content-center font-quicksand fw-bolder text-dark sign-in-text'>DON&apos;T HAVE AN ACCOUNT? SIGN UP</h5>
+                <h5 className='d-flex justify-content-center font-quicksand fw-bolder text-dark sign-in-text text-align-center'>DON&apos;T HAVE AN ACCOUNT? SIGN UP</h5>
               </a>
             </div>
           </Card.Body>

@@ -24,7 +24,13 @@ export default class PetDetails extends React.Component {
   }
 
   renderDetails() {
-    fetch(`/api/petdetails/${this.props.petId}`)
+    fetch(`/api/petdetails/${this.props.petId}`, {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        'X-Access-Token': localStorage.getItem('jwt')
+      }
+    })
       .then(res => res.json())
       .then(animal => this.setState({ animal }, () => this.getCoordinates()));
   }
