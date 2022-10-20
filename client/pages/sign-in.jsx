@@ -1,5 +1,7 @@
 import React from 'react';
 import { Form, Card, Button } from 'react-bootstrap';
+import AppContext from '../lib/app-context';
+import Redirect from '../components/redirect';
 
 export default class Signin extends React.Component {
   constructor(props) {
@@ -24,11 +26,7 @@ export default class Signin extends React.Component {
     })
       .then(res => res.json())
       .then(result => {
-        this.setState({
-          username: '',
-          password: ''
-        });
-        window.localStorage.setItem('jwt', result.token);
+        this.props.logIn(result);
       })
       .catch(err => {
         console.error(err);
@@ -45,6 +43,8 @@ export default class Signin extends React.Component {
   }
 
   render() {
+    const { user } = this.context;
+    if (user) return <Redirect to="#" />;
     return (
       <>
         <div className='mb-6rem'>
@@ -90,3 +90,5 @@ export default class Signin extends React.Component {
     );
   }
 }
+
+Signin.contextType = AppContext;

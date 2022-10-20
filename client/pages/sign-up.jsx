@@ -29,6 +29,7 @@ export default class SignUp extends React.Component {
       .catch(err => {
         console.error(err);
       });
+    window.location.hash = '#sign-in';
   }
 
   handleUsername(event) {
@@ -70,6 +71,7 @@ export default class SignUp extends React.Component {
                   value={this.state.password} />
               </Form.Group>
               <Button
+              variant='success'
               type='submit'
               size='lg'
                 className='border-0 rounded-pill d-grid ps-5 pe-5 m-auto font-quicksand fw-bolder font-button'>SIGN UP
