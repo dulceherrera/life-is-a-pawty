@@ -14,7 +14,13 @@ export default class SavedPets extends React.Component {
   }
 
   handleSavedPets() {
-    fetch('/api/saved')
+    fetch('/api/saved', {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        'X-Access-Token': localStorage.getItem('jwt')
+      }
+    })
       .then(res => res.json())
       .then(animals => this.setState({ animals }))
       .catch(err => {
@@ -31,7 +37,11 @@ export default class SavedPets extends React.Component {
       }
     }
     fetch(`/api/petdetails/${selectPetId}`, {
-      method: 'DELETE'
+      method: 'DELETE',
+      headers: {
+        'Content-Type': 'application/json',
+        'X-Access-Token': localStorage.getItem('jwt')
+      }
     })
       .then(() => {
         const deletePet = this.state.animals.slice();
@@ -44,6 +54,16 @@ export default class SavedPets extends React.Component {
   }
 
   render() {
+    if (this.state.animals[0] === undefined) {
+      return (
+        <div className='card bg-transparent d-flex justify-content-center text-align-center'>
+          <div className='card-body'>
+            <h1 className='card-title font-quicksand'>There is no saved pets</h1>
+            <a href="#sign-in" className='fs-2 font-patrick'>Sign in o sign up to see your pets saved</a>
+          </div>
+        </div>
+      );
+    }
     return (
     <>
     <h1 className='font-quicksand d-flex justify-content-center mt-5 your-pets-title'>YOUR PETS</h1>

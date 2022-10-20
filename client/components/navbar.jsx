@@ -23,6 +23,10 @@ export default function Navbar(props) {
               <i className='fa-solid fa-user-plus mr-1'></i>
               <h3 className='font-quicksand'>Sign Up</h3>
             </a>
+            <a href='#sign-in' className='text-black d-flex align-items-center text-decoration-none drawer-text'>
+              <i className='fa-solid fa-right-to-bracket mr-1'></i>
+              <h3 className='font-quicksand'>Sign In</h3>
+            </a>
           </div>
         </div>
       </div>
