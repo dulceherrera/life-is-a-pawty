@@ -8,6 +8,8 @@ import SavedPets from './pages/saved';
 import PetDetails from './pages/pet-details';
 import SignUp from './pages/sign-up';
 import Signin from './pages/sign-in';
+import AppContext from './lib/app-context';
+import jwtDecode from 'jwt-decode';
 
 export default class App extends React.Component {
   constructor(props) {
@@ -17,6 +19,8 @@ export default class App extends React.Component {
       isAuthorizing: true,
       route: parseRoute(window.location.hash)
     };
+    this.handleSignIn = this.handleSignIn.bind(this);
+    this.handleSignOut = this.handleSignOut.bind(this);
   }
 
   componentDidMount() {
@@ -24,9 +28,24 @@ export default class App extends React.Component {
       const parsedRoutes = parseRoute(window.location.hash);
       this.setState({ route: parsedRoutes });
     });
+    const token = window.localStorage.getItem('react-context-jwt');
+    const user = token ? jwtDecode(token) : null;
+    this.setState({ user, isAuthorizing: false });
   }
 
-  showMatches() {
+  handleSignIn(result) {
+    const { user, token } = result;
+    window.localStorage.setItem('react-context-jwt', token);
+    this.setState({ user });
+  }
+
+  handleSignOut() {
+    window.localStorage.removeItem('react-context-jwt');
+    this.setState({ user: null });
+    window.location.hash = '#sign-in';
+  }
+
+  displayPage() {
     const { route } = this.state;
     if (route.path === '') {
       return <Home />;
@@ -45,18 +64,24 @@ export default class App extends React.Component {
       return <SignUp />;
     }
     if (route.path === 'sign-in') {
-      return <Signin />;
+      return <Signin logIn = {this.handleSignIn} />;
     }
   }
 
   render() {
+    if (this.state.isAuthorizing) return null;
+    const { user } = this.state;
+    const { handleSignOut } = this;
+    const contextValue = { user, handleSignOut };
     return (
+      <AppContext.Provider value={contextValue}>
       <>
         <Navbar />
         <PageContainer>
-          {this.showMatches()}
+          {this.displayPage()}
         </PageContainer>
       </>
+      </AppContext.Provider>
     );
   }
 }
