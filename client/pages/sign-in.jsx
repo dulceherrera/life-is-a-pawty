@@ -26,12 +26,17 @@ export default class Signin extends React.Component {
     })
       .then(res => res.json())
       .then(result => {
-        this.props.logIn(result);
+        if (result.user && result.token) {
+          this.props.logIn(result);
+          window.location.hash = '#';
+        } else {
+          alert('Sorry, we cannot find an account with this credentials.');
+        }
       })
       .catch(err => {
         console.error(err);
       });
-    window.location.hash = '#';
+
   }
 
   handleUsername(event) {

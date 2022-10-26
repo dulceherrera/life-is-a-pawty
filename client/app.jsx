@@ -10,6 +10,7 @@ import SignUp from './pages/sign-up';
 import Signin from './pages/sign-in';
 import AppContext from './lib/app-context';
 import jwtDecode from 'jwt-decode';
+import NotFound from './pages/not-found';
 
 export default class App extends React.Component {
   constructor(props) {
@@ -66,6 +67,7 @@ export default class App extends React.Component {
     if (route.path === 'sign-in') {
       return <Signin logIn = {this.handleSignIn} />;
     }
+    return <NotFound />;
   }
 
   render() {
