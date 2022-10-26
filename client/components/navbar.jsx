@@ -1,12 +1,16 @@
 import React from 'react';
+import AppContext from '../lib/app-context';
 
-export default function Navbar(props) {
-  return (
+export default class Navbar extends React.Component {
+  render() {
+    const { user, handleSignOut } = this.context;
+    return (
     <header className='d-flex purple-background'>
-    <i className="fa-solid fa-bars text-white" data-bs-toggle="offcanvas" href="#offcanvasExample" role="button" aria-controls="offcanvasExample"></i>
+      <i className="fa-solid fa-bars text-white" data-bs-toggle="offcanvas" href="#offcanvasExample" role="button" aria-controls="offcanvasExample"></i>
       <div className="offcanvas offcanvas-start" tabIndex="-1" id='offcanvasExample' aria-labelledby="offcanvasExampleLabel">
         <div className="offcanvas-header mb-4">
-          <h1 id="offcanvasExampleLabel" className="offcanvas-title font-patrick">Life&apos;s a Pawty</h1>
+            {user !== null && <h1 className='offcanvas-title font-patrick' id='offcanvasExampleLabel'>Hi, {user.username}!</h1>}
+            {user === null && <h1 id="offcanvasExampleLabel" className="offcanvas-title font-patrick">Life&apos;s a Pawty</h1>}
           <button type="button" className="btn-close text-reset" aria-label="Close" data-bs-dismiss="offcanvas"></button>
         </div>
         <div className="offcanvas-body">
@@ -19,6 +23,16 @@ export default function Navbar(props) {
               <img src='/images/your-pets.png' alt='your-pets-icon' className="your-pets-icon"></img>
               <h3 className='font-quicksand'>Your Pets</h3>
             </a>
+            {user !== null &&
+            <>
+              <a onClick={handleSignOut} className='text-black d-flex align-items-center text-decoration-none drawer-text sign-out'>
+                  <i className='fa-solid fa-right-to-bracket mr-1'></i>
+                  <h3 className='font-quicksand'>Sign Out</h3>
+              </a>
+            </>
+            }
+            {user === null &&
+            <>
             <a href='#sign-up' className='text-black d-flex align-items-center text-decoration-none drawer-text'>
               <i className='fa-solid fa-user-plus mr-1'></i>
               <h3 className='font-quicksand'>Sign Up</h3>
@@ -27,6 +41,8 @@ export default function Navbar(props) {
               <i className='fa-solid fa-right-to-bracket mr-1'></i>
               <h3 className='font-quicksand'>Sign In</h3>
             </a>
+          </>
+          }
           </div>
         </div>
       </div>
@@ -37,5 +53,8 @@ export default function Navbar(props) {
         </a>
       </div>
     </header>
-  );
+    );
+  }
 }
+
+Navbar.contextType = AppContext;
