@@ -1,7 +1,3 @@
-.icon-home {
-  width: 100%;
-}
-
 .purple-background {
   background-color: #7f67be;
 }
@@ -67,14 +63,6 @@ select {
 
 .find-friend {
   font-size: 2rem;
-}
-
-.pet-img {
-  object-fit: cover;
-}
-
-.mt-10 {
-  margin-top: 6rem;
 }
 
 .img-fluid {

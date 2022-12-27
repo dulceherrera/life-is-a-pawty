@@ -6,7 +6,7 @@ export default class Navbar extends React.Component {
     const { user, handleSignOut } = this.context;
     return (
     <header className='d-flex purple-background'>
-      <i className="fa-solid fa-bars text-white" data-bs-toggle="offcanvas" href="#offcanvasExample" role="button" aria-controls="offcanvasExample"></i>
+        <i className="fa-solid fa-bars text-white d-flex align-items-center" data-bs-toggle="offcanvas" href="#offcanvasExample" role="button" aria-controls="offcanvasExample"></i>
       <div className="offcanvas offcanvas-start" tabIndex="-1" id='offcanvasExample' aria-labelledby="offcanvasExampleLabel">
         <div className="offcanvas-header mb-4">
             {user !== null && <h1 className='offcanvas-title font-patrick' id='offcanvasExampleLabel'>Hi, {user.username}!</h1>}
@@ -15,7 +15,7 @@ export default class Navbar extends React.Component {
         </div>
         <div className="offcanvas-body">
           <div className="nav-links">
-            <a className='text-decoration-none text-black d-flex mb-4rem align-items-center drawer-text' href='#'>
+            <a className='text-decoration-none text-black d-flex align-items-center drawer-text' href='#'>
               <img src='/images/home-icon.png' alt='home-icon' className='home-icon'></img>
               <h3 className='font-quicksand'>Home</h3>
             </a>
@@ -46,10 +46,10 @@ export default class Navbar extends React.Component {
           </div>
         </div>
       </div>
-      <div className='d-flex justify-content-center purple-background py-0 container-fluid'>
-        <a className='fs-0 text-white font-patrick title-nav d-flex justify-content-center' href='#'>Life&apos;s a Pawty</a>
-        <a href='#' className='d-flex justify-content-center width-10'>
-        <img className='icon-home' src='/images/catdog.svg'/>
+        <div className='container-fluid d-flex justify-content-center purple-background'>
+          <a className='navbar-brand fs-0 text-white font-patrick title-nav d-flex justify-content-center align-items-center' href='#'>Life&apos;s a Pawty</a>
+        <a href='#' className='d-flex justify-content-center width-10 navbar-brand'>
+        <img className='img-fluid' src='/images/catdog.svg'/>
         </a>
       </div>
     </header>
