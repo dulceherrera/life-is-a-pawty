@@ -46,10 +46,9 @@ export default class Navbar extends React.Component {
           </div>
         </div>
       </div>
-      <div className='d-flex justify-content-center purple-background py-0 container-fluid align-items'>
-        <a className='fs-0 text-white font-patrick title-nav d-flex justify-content-center' href='#'>Life&apos;s a Pawty</a>
-        <a href='#' className='d-flex justify-content-center width-10'>
-        <img className='icon-home' src='/images/catdog.svg'/>
+      <div className='d-flex justify-content-center purple-background py-0 container-fluid'>
+          <a className='fs-0 text-white font-patrick title-nav d-flex justify-content-center  align-items' href='#'>Life&apos;s a Pawty
+            <img className='icon-home' src='/images/catdog.svg' />
         </a>
       </div>
     </header>

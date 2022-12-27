@@ -10,15 +10,15 @@ body {
 }
 
 .search-height {
-  height: 2rem;
+  height: 3rem;
 }
 
 .icon-home {
-  width: 100%;
+  width: 20%;
 }
 
 .w-80 {
-  width: 85%;
+  width: 60%;
 }
 
 .next {
@@ -43,7 +43,7 @@ body {
 }
 
 .title-nav {
-  width: 55%;
+  width: 100%;
 }
 
 header {
@@ -136,10 +136,6 @@ header {
     height: 6rem;
   }
 
-  .title-nav {
-    width: 35%;
-  }
-
   .width-10 {
     width: 20%;
   }
@@ -158,7 +154,6 @@ header {
 
   .mt-6 {
     margin-top: 6rem;
-    margin-left: 3rem;
   }
 
   .margt-1 {
@@ -166,7 +161,7 @@ header {
   }
 
   .next {
-    width: 25%;
+    width: 50%;
   }
 
   .col-md-8 {
@@ -204,7 +199,6 @@ header {
 
   .fa-bars {
     padding-left: 1rem;
-    padding-top: 1rem;
   }
 
   .home-icon,
@@ -275,14 +269,18 @@ header {
   .mb-6rem {
     margin-bottom: 6rem;
   }
+
+  .icon-home {
+    width: 20%;
+  }
 }
 
 @media screen and (min-width: 1280px) {
-  .title-nav {
-    width: 25%;
-  }
-
   .width-10 {
     width: 15%;
+  }
+
+  .icon-home {
+    width: 14%;
   }
 }
