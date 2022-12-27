@@ -166,7 +166,7 @@ header {
   }
 
   .next {
-    width: 50%;
+    width: 30%;
   }
 
   .col-md-8 {
@@ -286,6 +286,10 @@ header {
   }
 
   .icon-home {
-    width: 14%;
+    width: 10%;
+  }
+
+  .next {
+    width: 20%;
   }
 }
