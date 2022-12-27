@@ -6,7 +6,7 @@ export default class Navbar extends React.Component {
     const { user, handleSignOut } = this.context;
     return (
     <header className='d-flex purple-background'>
-      <i className="fa-solid fa-bars text-white" data-bs-toggle="offcanvas" href="#offcanvasExample" role="button" aria-controls="offcanvasExample"></i>
+      <i className="fa-solid fa-bars text-white align-self" data-bs-toggle="offcanvas" href="#offcanvasExample" role="button" aria-controls="offcanvasExample"></i>
       <div className="offcanvas offcanvas-start" tabIndex="-1" id='offcanvasExample' aria-labelledby="offcanvasExampleLabel">
         <div className="offcanvas-header mb-4">
             {user !== null && <h1 className='offcanvas-title font-patrick' id='offcanvasExampleLabel'>Hi, {user.username}!</h1>}
@@ -25,7 +25,7 @@ export default class Navbar extends React.Component {
             </a>
             {user !== null &&
             <>
-              <a onClick={handleSignOut} className='text-black d-flex align-items-center text-decoration-none drawer-text sign-out'>
+              <a onClick={handleSignOut} className='text-black d-flex align-items-center text-decoration-none drawer-text'>
                   <i className='fa-solid fa-right-to-bracket mr-1'></i>
                   <h3 className='font-quicksand'>Sign Out</h3>
               </a>
@@ -46,7 +46,7 @@ export default class Navbar extends React.Component {
           </div>
         </div>
       </div>
-      <div className='d-flex justify-content-center purple-background py-0 container-fluid'>
+      <div className='d-flex justify-content-center purple-background py-0 container-fluid align-items'>
         <a className='fs-0 text-white font-patrick title-nav d-flex justify-content-center' href='#'>Life&apos;s a Pawty</a>
         <a href='#' className='d-flex justify-content-center width-10'>
         <img className='icon-home' src='/images/catdog.svg'/>

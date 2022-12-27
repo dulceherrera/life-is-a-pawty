@@ -1,9 +1,13 @@
-.icon-home {
-  width: 100%;
-}
-
 .purple-background {
   background-color: #7f67be;
+}
+
+.align-self {
+  align-self: center;
+}
+
+.align-items {
+  align-items: center;
 }
 
 .search-height {
