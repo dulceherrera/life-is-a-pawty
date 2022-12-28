@@ -15,7 +15,7 @@ export default class Navbar extends React.Component {
         </div>
         <div className="offcanvas-body">
           <div className="nav-links">
-            <a className='text-decoration-none text-black d-flex mb-4rem align-items-center drawer-text' href='#'>
+            <a className='text-decoration-none text-black d-flex align-items-center drawer-text' href='#'>
               <img src='/images/home-icon.png' alt='home-icon' className='home-icon'></img>
               <h3 className='font-quicksand'>Home</h3>
             </a>
@@ -46,9 +46,11 @@ export default class Navbar extends React.Component {
           </div>
         </div>
       </div>
+
       <div className='d-flex justify-content-center purple-background py-0 container-fluid'>
           <a className='fs-0 text-white font-patrick title-nav d-flex justify-content-center  align-items' href='#'>Life&apos;s a Pawty
             <img className='icon-home' src='/images/catdog.svg' />
+
         </a>
       </div>
     </header>

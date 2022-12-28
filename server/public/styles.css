@@ -73,14 +73,6 @@ select {
   font-size: 2rem;
 }
 
-.pet-img {
-  object-fit: cover;
-}
-
-.mt-10 {
-  margin-top: 6rem;
-}
-
 .img-fluid {
   border-radius: 10px;
   margin-bottom: 0;

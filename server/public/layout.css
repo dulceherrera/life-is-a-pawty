@@ -5,13 +5,10 @@ body {
   background-position: center;
 }
 
-.fs-4 {
-  width: 50%;
-}
-
 .search-height {
   height: 3rem;
 }
+
 
 .icon-home {
   width: 20%;
@@ -19,6 +16,10 @@ body {
 
 .w-80 {
   width: 60%;
+=======
+.w-85 {
+  width: 80%;
+
 }
 
 .next {
@@ -37,11 +38,6 @@ body {
   margin-bottom: 1.8rem;
 }
 
-.img-fluid {
-  margin-bottom: 2rem;
-  margin-top: 2rem;
-}
-
 .title-nav {
   width: 100%;
 }
@@ -50,7 +46,7 @@ header {
   margin-bottom: 1.5rem;
 }
 
-.w-85 {
+.w-80 {
   width: 80%;
   margin: auto;
 }
