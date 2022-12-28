@@ -34,7 +34,8 @@ Try the application at https://life-is-a-pawty.dulceherrera.com/
 
 ## Preview
 
-![portfolio1](https://user-images.githubusercontent.com/97363006/209716434-bdfedd2c-fc71-4e4b-97aa-1a8d7d592d23.gif)
+![portfolio7](https://user-images.githubusercontent.com/97363006/209769061-a6a4271a-6e1d-463a-bf24-6c731a51b1cd.gif)
+
 
 
 ## Stretch Features
