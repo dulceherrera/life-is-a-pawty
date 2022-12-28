@@ -31,7 +31,7 @@ export default class Home extends React.Component {
           <h1 className='mt-2 font-patrick find-friend'>Find your friend!</h1>
           <form onSubmit={this.handleSubmit} className='w-100 mt-6'>
             <label htmlFor='search'></label>
-            <input required onChange={this.handleLocation} value={this.state.location} type="search" id="search" name="search" placeholder='Enter city or zip' className='search-height w-100 rounded-2 form-styles pl-2 mb-3'/>
+            <input required onChange={this.handleLocation} value={this.state.location} type="search" id="search" name="search" placeholder='Enter zip code' className='search-height w-100 rounded-2 form-styles pl-2 mb-3'/>
             <label htmlFor='pets'></label>
           <select required onChange={this.handleType} value={this.state.type} name="pets" id="pets" className='w-100 rounded-2 margt-1 search-height form-styles pl-2 position-relative'>
               <option value="choose" className='position-absolute1'>Choose your pet</option>

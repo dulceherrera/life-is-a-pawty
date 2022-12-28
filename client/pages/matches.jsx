@@ -1,4 +1,5 @@
 import React from 'react';
+import LoadingSpinner from '../components/loading-spinner';
 
 export default class Matches extends React.Component {
   constructor(props) {
@@ -17,6 +18,7 @@ export default class Matches extends React.Component {
       state: '',
       postcode: '',
       url: '',
+      isLoading: true,
       userId: null
     };
     this.handleSave = this.handleSave.bind(this);
@@ -52,6 +54,7 @@ export default class Matches extends React.Component {
           phone: animal.contact.phone,
           state: animal.contact.address.state,
           postcode: animal.contact.address.postcode,
+          isLoading: false,
           url: animal.url
         }))
       .catch(error => {
@@ -93,7 +96,10 @@ export default class Matches extends React.Component {
 
   render() {
     const { photos, name, city, age, breed, gender, size } = this.state;
-    return (
+    if (this.state.isLoading === true) {
+      return <LoadingSpinner />;
+    } else {
+      return (
       <div className= 'card card-margin bg-transparent'>
         <div className='row g-0'>
           <div className='col-md-8 d-flex justify-content'>
@@ -119,6 +125,7 @@ export default class Matches extends React.Component {
             </div>
         </div>
       </div>
-    );
+      );
+    }
   }
 }
