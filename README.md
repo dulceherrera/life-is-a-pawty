@@ -1,6 +1,6 @@
 # Life's a Pawty
 
-A full stack web application for for prospective dog and/or cat adopters who want to find pets available for adoption.
+A full stack web application for prospective dog and/or cat adopters who want to find pets available for adoption.
 
 I have always felt a deep love for animals, this is what made me develop this app. With this app I want dogs and cats that are in shelters to have more chances of being adopted and being part of a family that gives them love. As in the famous dating app, in this app you can match with pets (cats and dogs) in your area.
 
