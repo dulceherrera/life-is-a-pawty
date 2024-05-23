@@ -31,18 +31,18 @@ export default class App extends React.Component {
     });
     const token = window.localStorage.getItem('jwt');
     const user = token ? jwtDecode(token) : null;
-    this.setState({ user, isAuthorizing: false });
+    this.setState({ user, isAuthorizing: !!user });
   }
 
   handleSignIn(result) {
     const { user, token } = result;
     window.localStorage.setItem('jwt', token);
-    this.setState({ user });
+    this.setState({ user, isAuthorizing: !!user });
   }
 
   handleSignOut() {
     window.localStorage.removeItem('jwt');
-    this.setState({ user: null });
+    this.setState({ user: null, isAuthorizing: false });
     window.location.hash = '#sign-in';
   }
 
@@ -52,7 +52,11 @@ export default class App extends React.Component {
       return <Home />;
     }
     if (route.path === 'matches') {
-      return <Matches />;
+      if (this.state.isAuthorizing) {
+        return <Matches />;
+      } else {
+        return <Signin logIn={this.handleSignIn} />;
+      }
     }
     if (route.path === 'saved-pets') {
       return <SavedPets />;
@@ -71,7 +75,6 @@ export default class App extends React.Component {
   }
 
   render() {
-    if (this.state.isAuthorizing) return null;
     const { user } = this.state;
     const { handleSignOut } = this;
     const contextValue = { user, handleSignOut };
